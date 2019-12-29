@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sleep
+  name: simple-flask-app-client
   namespace: istio-app
   labels:
     app: sleep
@@ -17,7 +17,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: sleep
+  name: simple-flask-app-client
   namespace: istio-app
 spec:
   replicas: 1
