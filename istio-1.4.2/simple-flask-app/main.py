@@ -12,7 +12,7 @@ def show_env(env):
 @app.route('/fetch')
 def fetch_env():
     url = request.args.get('url', '')
-    with urllib.request.urlopen(url) as response:
+    with urlopen(url) as response:
         return response.read()
 
 TRACE_HEADERS = [
