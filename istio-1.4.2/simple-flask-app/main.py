@@ -29,7 +29,6 @@ TRACE_HEADERS = [
 def fetch_with_headers():
     url = request.args.get('url', '')
     request_headers = dict(request.headers)
-    request_headers = dict(request.headers)
     new_header = {}
     for key in request_headers.keys():
         if key.lower() in TRACE_HEADERS:
