@@ -12,8 +12,10 @@ def show_env(env):
 @app.route('/fetch')
 def fetch_env():
     url = request.args.get('url', '')
+    request_headers = dict(request.headers)
     with urlopen(url) as response:
-        return response.read()
+        res = response.read()
+        return  "{}\n{}".format(json.dumps(request_headers), res)
 
 TRACE_HEADERS = [
     'x-request-id',
@@ -36,7 +38,7 @@ def fetch_with_headers():
 
     req = Request(url, headers = new_header)
     res = urlopen(req).read()
-    return  "{}\n{}".format(json.dumps(request_headers), res)
+    return  "{}\n{}\n{}".format(json.dumps(request_headers), json.dumps(new_header), res)
 
 @app.route('/fetch_with_trace')
 def fetch_with_trace():
